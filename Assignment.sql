@@ -1,0 +1,23 @@
+CREATE DATABASE Store;
+USE Store;
+
+
+CREATE TABLE Categories(
+name VARCHAR(30) NOT NULL UNIQUE,
+id INT AUTO_INCREMENT NOT NULL UNIQUE, PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Products(
+id INT AUTO_INCREMENT NOT NULL UNIQUE,
+title VARCHAR(50) NOT NULL,
+description TEXT,
+price INT,
+img_url TEXT,
+favorite BOOL,
+category INT,
+	FOREIGN KEY (category)
+	REFERENCES Categories(id)
+		ON UPDATE CASCADE
+		ON DELETE RESTRICT
+);
